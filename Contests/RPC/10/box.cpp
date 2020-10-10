@@ -3,56 +3,99 @@ using namespace std;
 //#define LOCAL
 #define fastIO ios::sync_with_stdio(0), cin.tie(0)
 #define endl '\n'
-#define forn(i,a,b) for(int i=a;i<=b;i++)
-#define ft first
-#define sd second
-#define sz size()
-#define pb push_back
-#define pob pop_back()
-#define pf push_front
-#define pof pop_front()
-#define all(x) (x).begin(), (x).end()
-typedef long long ll;
-typedef pair<int,int> pii;
-typedef pair<string,int> psi;
-typedef pair<char,char> pcc;
-typedef pair<double,double> pdd;
-typedef pair<long long,long long> pll;
-//cout << fixed << setprecision(12) <<x<<endl;
-
-int main(){
-fastIO;
+ 
+const int MAX = 1001;
+int ans[MAX];
+ 
+int main()
+{
+    fastIO;
 #ifdef LOCAL
-     freopen("in.txt", "r", stdin);
+    freopen("in.txt", "r", stdin);
 #endif
-
-short b=0,r=0,i=0;
-cin >> b >> r;
-short copia=r;
-int pos[r];
-vector<pair<int,int>> vec;
-while(r--){
-    int h=0,v=0,c=0;
-    cin >> h >> v >> c;
-    vec.push_back({c,v});
-    pos[i]=h;
-    i++;
-}
-sort(all(vec));
-int ans=0,may=-1;;
-for(auto &x:vec){
-    if(x.sd>may){
-        may=x.sd;
-    }
-    for(int j=0;j<copia;j++){
-        if(x.ft==pos[j]){
-            ans+=x.sd;
-            break;
+ 
+    int a=0,r=0,h=0,v=0,c=0;
+    cin >> a >> r;
+    for(int i=1;i<=a;i++) ans[i]=0;
+    while(r--)
+    {
+        h = 0;
+        v = 0;
+        c = 0;
+        cin >> h >> v >> c;
+        int Vmax = -1,copiaH = h,i=c;
+        while(copiaH--){
+        	Vmax = max(Vmax,ans[i]);
+        	i++;
+        }
+        int j = c;
+        while(h--){
+        	ans[j]=(Vmax+v);
+        	j++;
         }
     }
+    int rta = -1;
+    for(int i=1;i<=a;i++)
+    {
+        rta = max(rta,ans[i]); //Busca el mayor en todo el arreglo.
+        //cout<<ans[i]<<endl;
+    }
+    cout<<rta<<endl;
 }
-if(may<ans)
-cout<<ans<<endl;
-else cout<<may<<endl;
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
