@@ -1,0 +1,58 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define fastIO ios::sync_with_stdio(0), cin.tie(0)
+#define endl '\n'
+#define forn(i, a, b) for (int i = a; i < b; i++)
+#define ft first
+#define sd second
+#define sz size()
+#define pb push_back
+#define all(x) (x).begin(), (x).end()
+#define rall(x) (x).rbegin(), (x).rend()
+typedef long long ll;
+typedef pair<int, int> pii;
+typedef pair<string, int> psi;
+typedef pair<char, char> pcc;
+typedef pair<double, double> pdd;
+typedef pair<long long, long long> pll;
+//cout << fixed << setprecision(15) <<x<<endl;
+
+int main()
+{
+    fastIO;
+    int t ;
+    cin >> t;
+    cin.ignore();
+    string s;
+    while(t--){
+        getline(cin, s);
+        string aux;
+        int j = 0, tmp = 0;
+        bool flag = 0;
+        for(int i = s.sz -1; i >= 0; i--){
+            if(s[i] == '.' || s[i] == '?' || s[i] == '!'){
+                flag = 1;
+                tmp++;
+                continue;
+            } 
+            if(j == 3) break;
+            j++;
+          aux.pb(s[i]);  
+        }
+        reverse(all(aux));
+        if(aux == "bro"){
+            cout << s << endl;
+        }else{
+            if(flag){
+            	string str = s.substr(s.sz-tmp);
+            	s.resize(s.sz-tmp);
+            	s.append(" bro");
+            	s.append(str);
+            	cout << s << endl;
+            }else{
+                cout << s << " bro" << endl;
+            }
+        }
+    }
+    return 0;
+} //g++ -std=c++17 main.cpp -o main && ./main < in.txt
